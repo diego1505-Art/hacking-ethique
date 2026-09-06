@@ -401,7 +401,11 @@ ensuite il suffira de glisser et deposer depuis le racoursis dans votre kali lin
 ````bash
 zip -e -P defender_bypass /home/kali/Desktop/putty_ultimate.zip /home/kali/Desktop/putty_ultimate.exe
 ````
-puis envoyer le dans votre vm dans widow 10 desZiper et ouvrir le malwar ensuite revenait dans kali linux et demmarrer le port d ecoute .
+
+## puis envoyer le dans votre vm dans widow 10 desZiper et ouvrir le malwar ensuite revenait dans kali linux et demmarrer le port d ecoute .
+## tout d abord il faut connecter votre disque de votre pc a votre disque de votre vm windows 10 double cliquez sur ce fichier :
+
+
 
 ## TABLEAU DES COMMANDES D'ÉCOUTE AVEC EXPLICATIONS
 
