@@ -627,9 +627,6 @@ background      # Arrière-plan
 **Conclusion :** Les commandes `screenshot`, `keyscan` et `hashdump` fonctionnent **uniquement sous Windows**. Sous Linux, Android ou macOS, certaines commandes sont indisponibles.
 faites des tester amusez vous avec tous ces commande et etre habitué car pour faire des malwar qui marche on va devoir utiliser de vrai outil certain legal certain illegal meme au telechargement
 
-Bien sûr. Voici un **disclaimer prêt à copier-coller dans ton fichier Markdown GitHub** :
-
-```md
 #  DISCLAIMER — UTILISATION ÉTHIQUE ET LÉGALE
 
 > [!WARNING]
@@ -721,5 +718,4 @@ Je découvre régulièrement de nouveaux sujets, outils et concepts. Certaines
 informations sont donc susceptibles d'être **corrigées, modifiées ou complétées**
 au fur et à mesure de ma progression.
 
-````
 
