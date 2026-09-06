@@ -626,3 +626,100 @@ background      # Arrière-plan
 
 **Conclusion :** Les commandes `screenshot`, `keyscan` et `hashdump` fonctionnent **uniquement sous Windows**. Sous Linux, Android ou macOS, certaines commandes sont indisponibles.
 faites des tester amusez vous avec tous ces commande et etre habitué car pour faire des malwar qui marche on va devoir utiliser de vrai outil certain legal certain illegal meme au telechargement
+
+Bien sûr. Voici un **disclaimer prêt à copier-coller dans ton fichier Markdown GitHub** :
+
+```md
+#  DISCLAIMER — UTILISATION ÉTHIQUE ET LÉGALE
+
+> [!WARNING]
+> ##  IMPORTANT
+>
+> mon dépôt contient mes **notes personnelles, recherches et expérimentations**
+> dans le domaine de la cybersécurité.
+>
+> Les informations présentées sont partagées **uniquement à des fins éducatives,
+> de recherche et d'apprentissage**.
+
+---
+
+##  ENVIRONNEMENT DE TEST UNIQUEMENT
+
+Les manipulations, outils et concepts présentés dans cette section doivent être
+utilisés uniquement dans un environnement autorisé et contrôlé :
+
+- Sur vos propres machines ;
+- Dans des machines virtuelles dédiées aux tests ;
+- Dans un laboratoire isolé ;
+- Dans un CTF ou environnement volontairement vulnérable ;
+- Sur un système pour lequel vous possédez une **autorisation explicite**.
+
+> [!CAUTION]
+> **Si vous n'avez pas l'autorisation explicite du propriétaire d'un système,
+> ne le testez pas.**
+
+---
+
+##  UTILISATIONS INTERDITES
+
+mon dépôt ne doit pas être utilisé pour :
+
+- Accéder à un système sans autorisation ;
+- Infecter l'ordinateur ou le téléphone d'une autre personne ;
+- Voler des données, mots de passe ou identifiants ;
+- Distribuer volontairement un logiciel malveillant ;
+- Contourner les protections d'un système tiers sans autorisation ;
+- Attaquer une personne, une entreprise ou un service ;
+- Nuire à la confidentialité, l'intégrité ou la disponibilité d'un système.
+
+---
+
+##  MALWARE RESEARCH
+
+Les sujets liés aux malwares, shellcodes, payloads, injection, obfuscation,
+analyse mémoire ou autres techniques similaires sont étudiés dans un but de
+**compréhension et de recherche en cybersécurité**.
+
+Ils peuvent notamment permettre de mieux comprendre :
+
+- Comment analyser un malware ;
+- Comment fonctionnent les mécanismes de détection ;
+- Comment identifier des comportements suspects ;
+- Comment rechercher des IOCs ;
+- Comment travailler dans un laboratoire isolé ;
+- Comment améliorer la détection et la défense.
+
+> [!IMPORTANT]
+> Un outil ou une technique peut avoir un usage légitime dans la recherche et
+> devenir illégal selon **la cible, le contexte et l'absence d'autorisation**.
+
+---
+
+##  RESPONSABILITÉ
+
+Chaque utilisateur est **entièrement responsable de ses propres actions**.
+
+L'auteur de ce dépôt ne peut être tenu responsable d'une utilisation abusive,
+illégale ou non autorisée des informations présentées.
+
+**Cependant, ce disclaimer ne constitue pas une autorisation légale.**
+
+Vous devez respecter :
+
+- Les lois applicables dans votre pays ;
+- Les règles des plateformes utilisées ;
+- Les conditions des systèmes et services testés ;
+- Les autorisations nécessaires avant toute manipulation.
+
+---
+
+##  NOTE PERSONNELLE
+
+mon dépôt représente **mon parcours personnel d'apprentissage en cybersécurité**.
+
+Je découvre régulièrement de nouveaux sujets, outils et concepts. Certaines
+informations sont donc susceptibles d'être **corrigées, modifiées ou complétées**
+au fur et à mesure de ma progression.
+
+````
+
