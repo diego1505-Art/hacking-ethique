@@ -539,9 +539,14 @@ msfconsole -q -x "use exploit/multi/handler; set PAYLOAD [PAYLOAD]; set LHOST [V
 ## nous faire un port d ecoute mais on se demande encore ok mais qu est ce qu on peut bien faire maintenant.
 ## voila la list des commande faisable si vous avez une connexion depuis une cible :
 
+
+Ouvrir la session pour pouvoir taper les commandes :
+
+````bash
+sessions -i 1
+````
 # Commandes Meterpreter pour toutes les plateformes
 
----
 
 ### 1. Commandes communes à toutes les plateformes
 
