@@ -24,6 +24,13 @@
 
 ## commande pour lancer msfconsole :  
 
+mettre a jour d abord :
+
+````bash
+apt update && apt install metasploit-framework -y
+````
+lancer :
+
 ```bash
 service postgresql start §§ apach2 start
 msfdb init
