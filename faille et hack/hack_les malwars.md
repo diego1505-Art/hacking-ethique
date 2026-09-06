@@ -545,6 +545,10 @@ Ouvrir la session pour pouvoir taper les commandes :
 ````bash
 sessions -i 1
 ````
+
+<img width="1920" height="923" alt="image" src="https://github.com/user-attachments/assets/c4d3eb95-85cb-4903-a72f-0f2a2f1d3bc7" />
+
+
 # Commandes Meterpreter pour toutes les plateformes
 
 
