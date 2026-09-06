@@ -407,6 +407,45 @@ zip -e -P defender_bypass /home/kali/Desktop/putty_ultimate.zip /home/kali/Deskt
 
 <img width="1920" height="923" alt="VirtualBox_window_06_09_2026_14_44_04" src="https://github.com/user-attachments/assets/a15e7f9f-c9cd-4f8f-ba7f-fec2552af384" />
 
+# les ecoutes
+
+### on se demande maintenant qu est ce qu on peut faire quand une cible ouvre le malwars on doit ecouter la connexion par votre port et ip 
+
+1. VOLER DES MOTS DE PASSE
+
+Enregistrer ce que tape l'utilisateur (keylogger)
+Récupérer les mots de passe stockés dans Windows
+→ Tu peux te connecter à ses comptes
+
+2. DEVENIR INVISIBLE
+
+Migrer vers explorer.exe (processus système)
+Créer une persistance après redémarrage
+→ Tu restes sans être détecté
+
+4. VOLER DES FICHIERS
+
+Documents Word, Excel, PDF
+Photos, vidéos, emails
+Mots de passe WiFi
+→ Tu récupères des informations sensibles
+
+4. ESPIONNER
+
+Capture d'écran en temps réel
+Webcam + micro
+Historique de navigation
+→ Tu vois ce qu'il fait en direct
+
+5. PRENDRE LE CONTRÔLE
+
+Ouvrir un shell (cmd)
+Créer un utilisateur admin
+Désactiver Defender
+Attaquer d'autres machines sur le réseau
+→ Tu fais ce que tu veux sur la machine
+
+### Donc une fois connecté, tu peux voler ses mots de passe, ses fichiers, l'espionner, te cacher et prendre le contrôle total de sa machine. C'est un accès complet au système.
 
 ## TABLEAU DES COMMANDES D'ÉCOUTE AVEC EXPLICATIONS
 
