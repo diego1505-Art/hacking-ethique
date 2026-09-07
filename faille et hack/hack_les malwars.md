@@ -734,5 +734,5 @@ background      # Arrière-plan
 
 ---
 
-**Conclusion :** Les commandes `screenshot`, `keyscan` et `hashdump` fonctionnent **uniquement sous Windows**. Sous Linux, Android ou macOS, certaines commandes sont indisponibles.
-faites des tester amusez vous avec tous ces commande et etre habitué car pour faire des malwar qui marche on va devoir utiliser de vrai outil certain legal certain illegal meme au telechargement
+**Conclusion :** Les commandes `screenshot`, `keyscan` et `hashdump` fonctionnent **uniquement sous Windows**. Sous Linux, Android ou macOS, certaines commandes sont indisponibles.esnuite il reste des commande importante comme la geoloc sur les pc mais impossible sur les vm ensuite persiste ce module incoyable qui va faire en sorte que meme au redemmarrage le malwar reste ou meme se fondre dans les fichier systeme ou un desactivement de window defender et des anti virus le probleme est qu avec les malwar actuelle que nous faisont ils ne marche que sur des vm et les vm au redemmarrage reinitialise toutes les commande window defender alors impossible de desactiver et pour la localisation et bien votre vm n as pas acces a votre carte reseau donc sert a rien .
+faites des tester amusez vous avec tous ces commande et soyez  habitué car pour faire des malwar qui marche on va devoir utiliser de vrai outil certain legal certain illegal meme au telechargement
