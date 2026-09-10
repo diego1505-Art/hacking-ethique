@@ -42,3 +42,9 @@ sudo python3 st.py
 ### autre infos :  
 
 si vous voulez changer les templates ne touchez pas au js (il y a souvent des confusion avec les chemins et le serv)
+
+## puis un outil specialiser dans la geolocalisation :
+
+````bash
+https://github.com/thewhiteh4t/seeker
+````
