@@ -2,7 +2,7 @@ https://vx-underground.org/                       - apprendre les virus    (banq
 
 https://github.com/sundowndev/hacker-roadmap      - hacking                (list de depot gitub pour hacker miam -__-)
 
-https://uncensored.chat/chat/2018d9d7-bae9-4e4a-bd8b-8b8a60dd0e8a.         (IA non censuré avec un peu de credit)
+https://uncensored.chat/chat/      (IA non censuré avec un peu de credit)
 pour l'IA non-censuré je vous propose de prendre un vpn vous pourrez alors continuez la conversation
 - proton vpn --> gratuit
 - nord vpn   --> payant mais plus de ip
