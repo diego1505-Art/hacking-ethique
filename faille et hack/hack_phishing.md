@@ -48,3 +48,12 @@ si vous voulez changer les templates ne touchez pas au js (il y a souvent des co
 ````bash
 https://github.com/thewhiteh4t/seeker
 ````
+# enfin des petit site pour le pishing
+
+`````bash
+https://grabify.org/
+``````
+
+````bash
+https://curiouspatch.com/en/articles/understanding-ip-address-tracking-and-servers?tkn=eyJhbGciOiJIUzI1NiJ9.eyJhZHRpdGxlIjoiZ3JhYmlmeS5uZXQiLCJjaGFubmVsIjoiZF8wMTAxMiIsImNvdW50cnkiOiJmciIsImRvbWFpbiI6ImN1cmlvdXNwYXRjaC5jb20iLCJleHAiOjE3OTM1NTg1MTgsImxhbmciOiJFTiIsImxhbmd1YWdlIjoiRU4iLCJzYWxlYmFubmVyIjp7ImxpbmsiOiJodHRwczovL3d3dy5teWRvbWFpbmNvbnRhY3QuY29tLz9kb21haW5fbmFtZT1ncmFiaWZ5Lm5ldCIsInRleHQiOiJJbmZvcm1hdGlvbiBhYm91dCAgZ3JhYmlmeS5uZXQ6IC1ALUFjaGV0ZXIgY2UgZG9tYWluZS4tQC0iLCJ0eXBlIjoic3VidGxlIn0sInRhcmdldF91cmwiOiJodHRwczovL2N1cmlvdXNwYXRjaC5jb20vZW4vYXJ0aWNsZXMvdW5kZXJzdGFuZGluZy1pcC1hZGRyZXNzLXRyYWNraW5nLWFuZC1zZXJ2ZXJzIiwidHJhY2tfaWQiOiI4NzcxZDdiM2ZlNTM3ZDY3MjMwMTE0YzM0Y2RlMmQ2OTg4MzkzNjZhIn0.CBYQ051zj4deQ-Q8x9gJGGlQFMbXcWbjdSRAoxTt8fs
+````
