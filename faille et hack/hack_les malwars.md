@@ -32,7 +32,7 @@ apt update && apt install metasploit-framework -y
 lancer :
 
 ```bash
-service postgresql start §§ apach2 start
+service postgresql start
 msfdb init
 msfconsole
 ```
