@@ -768,5 +768,11 @@ faites des tester amusez vous avec tous ces commande et soyez  habitué .
 
 Les techniques avancées (loaders, evasion, contournement Defender)
 ne sont pas documentées ici pour éviter qu'elles ne deviennent obsolètes.
+voila un exemple de createur de stealer avec connexion meterpreter simple interface graphique 
+
+````bash
+https://grabber.cy/ef2a1ec59d44da97b667ffb917b814f1/login
+````
 
 Pour en savoir plus, contactez-moi.
+
