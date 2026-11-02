@@ -64,3 +64,9 @@ https://www.youtube.com/watch?v=1sYa65LsL94 (burp suite en brute force et avec d
 'OR 1 = 1 --'
 ````
 - reponse toujours vrai
+  
+## et pour vous entrainer sur des site non secu voici comment les trouver :
+
+````bash
+https://github.com/Proviesec/google-dorks/blob/main/google-dorks-for-sql-injection.txt
+````
