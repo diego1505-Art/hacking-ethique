@@ -1,99 +1,58 @@
-# hack : attack ddos  unstable + ultra ddos + geeddos   
-si vous avez un pc assez puissant vous pouvez tres bien combiner plusieur outils.  
+# DDoS — comprendre les risques et tester la résilience
 
-## prerequis :
-- virtual box avec kali linux dedans
-  
-### Ultra DDos,   
-c un outil d attaque ddos tres puissant parfait pour un petit site et faible ip (si vous  posseder un pc moyen prenez)  
-un autre désavantage est qu il ne cache pas votre ip mais sinon il conservbien les requet get post et head et les envoie d un par paquet ce qui en fait une bonne attaque . 
+Un déni de service distribué cherche à rendre un service indisponible en saturant ses ressources. Les projets listés ci-dessous peuvent générer du trafic agressif : ils ne doivent jamais être utilisés contre une IP, un domaine ou un service tiers.
 
+Cette note est réorientée vers la compréhension, la détection et les tests de charge autorisés.
 
-<img width="960" height="461" alt="ddos$" src="https://github.com/user-attachments/assets/86977164-7735-47ba-b493-67cf5d449119" />
+## Projets présents dans la note originale
 
-commande a mettre dans kali linux pour ultra ddos :  
+| Projet | Lien | Explication |
+|---|---|---|
+| Ultra-DDos | [Dépôt GitHub](https://github.com/mishakorzik/Ultra-DDos) | Projet de génération de trafic cité pour étudier les risques d’un flux HTTP. À ne pas lancer contre Internet. |
+| UnstableDDoS | [Dépôt GitHub](https://github.com/iJoshoa/UnstableDDoS) | Projet cité pour observer différents paramètres de trafic. Utilisation limitée à un réseau de lab isolé. |
+| GreeDoS V2 | [Dépôt GitHub](https://github.com/MrEchoFi/GreeDoS_V2) | Projet cité pour analyser la variation de flux et de paramètres. Ne pas l’utiliser comme outil d’attaque. |
 
-````bash
-sudo apt update
-sudo apt upgrade
-````
-ensuite les dependances :  
+## Installation pour lecture et audit du code
 
-````bash
-sudo apt installgit python3 python3-pip
-````
-cloner le repot pour ultra ddos :    
-````bash
-git clone https://github.com/mishakorzik/Ultra-DDos
-````
-ouvrir et lancer pour ultra ddos :
+Cloner un projet ne signifie pas l’exécuter. Commencez par lire son README et inspecter ses dépendances :
 
-````bash
+```bash
+git clone https://github.com/mishakorzik/Ultra-DDos.git
 cd Ultra-DDos
-python2 main.py
-````
-si un probleme pour ulra ddos :  
+sed -n '1,220p' README.md
+```
 
-````bash
-pip install --break-system-packages user-agent
-````
-vous pouvez lancer une attack ddos sur une ip avec son port et sur un site web  avec son url
+Pour analyser les deux autres dépôts dans des dossiers séparés :
 
-### Unstable,
+```bash
+cd ..
+git clone https://github.com/iJoshoa/UnstableDDoS.git
+git clone https://github.com/MrEchoFi/GreeDoS_V2.git
+```
 
-c est un outil majeur et surtout parametrable comme passer par un http flood ou tcp flood ensuite avoir un proxy ,le nombre de tread enfin le nombre de multiplication pour l attaque . En resumé un outil plus pro donc en fonction des parametre peu consommer plus et avoir une meilleur attaque (logique)  
+Avant toute exécution, examinez les scripts, les dépendances, les destinations réseau et les conditions de licence. Utilisez une VM sans accès à votre réseau de production.
 
-<img width="960" height="461" alt="ddos 4" src="https://github.com/user-attachments/assets/fe13003e-fd5f-45f7-9945-030482f28294" />
+## Test de charge bénin en local
 
-````bash
+Pour un service que vous avez écrit et qui écoute uniquement sur `127.0.0.1`, utilisez de préférence un outil de benchmark conçu pour le test de performance, avec un faible volume et une durée courte. Par exemple, installez ApacheBench :
+
+```bash
 sudo apt update
-sudo apt upgrade
-````
-ensuite les dependances : 
+sudo apt install apache2-utils
+ab -n 20 -c 2 http://127.0.0.1:8000/
+```
 
-````bash
-pip3 install --break-system-packages pysocks bs4 scapy-python3
-````
-pour unstable :
+Arrêtez immédiatement si le service ou la machine montre des signes de saturation. N’utilisez pas cette commande contre un domaine public.
 
-````bash
-git clone https://github.com/iJoshoa/UnstableDDoS
-````
-ouvrir et lancer pour unstable :  
+## Défenses à étudier
 
-````bash
- cd UNSTABLE.py
-python UNSTABLE.py
-````
+- limitation de débit et quotas ;
+- cache et CDN ;
+- filtrage réseau ;
+- files d’attente et timeouts ;
+- supervision CPU, mémoire, connexions et bande passante ;
+- plan de réponse à incident et contact de l’hébergeur.
 
-vous pouvez lancer une attack ddos sur une ip avec son port ,sur un site web  avec son URL tout en parametrant
+## Conclusion
 
-### Greeddos,
-
-c est un outil encore plus pro la on peut tout parametrant comme le flux les port les tread les seconde la puissance une different facon d attaquer et bien d autre (il peut aussi mettre plus de puissance ) 
-
-<img width="960" height="461" alt="ddos 7" src="https://github.com/user-attachments/assets/f54c5676-60bb-42b0-9cfb-584083349297" />
-
-
-````bash
-sudo apt update
-sudo apt upgrade
-````
-ensuite les dependances :
-
-````bash
-sudo apt installgit python3 python3-pip
-pip3 install --break-system-packages pysocks bs4 scapy-python3
-````
-cloner le repot pour :
-
-````bash
-git clone https://github.com/MrEchoFi/GreeDoS_V2
-````
-ouvrir et lancer pour Greeddos :  
-
-````bash
-cd GreeDoS_V2
-python3 GreeDoS_ii.py
-````
-vous pouvez lancer une attack ddos sur une ip avec son port ,sur un site web  avec une URL et bien tout parametré meme une attaque differente
+La valeur pédagogique de ces projets est d’apprendre à reconnaître un trafic anormal et à renforcer une infrastructure. La génération de trafic vers une cible non autorisée est illégale et peut causer une interruption de service.

@@ -1,42 +1,62 @@
+# Failles web — comprendre et corriger
 
+Cette note présente plusieurs familles de failles web de manière pédagogique. Les exemples doivent être reproduits uniquement sur une application locale volontairement vulnérable, comme DVWA, WebGoat ou une application créée pour le test.
 
-### faille XML  
+## 1. XXE — XML External Entity
 
-Le site accepte des fichiers XML. Tu envoies un XML spécial qui contient une instruction pour lire un fichier sur le serveur.  
-Exemple : Tu envoies un XML piégé et le serveur te retourne le contenu d'un fichier de configuration avec des mots de passe.  
+Une faille XXE apparaît lorsqu’une application accepte du XML et autorise des entités externes sans filtrage adapté. Le serveur peut alors tenter de lire une ressource locale ou d’effectuer une requête sortante.
 
-````bash 
-<?xml version="1.0" encoding="UTF-8"?>  
-<root>  
-    <meta name="source">/var/log/auth.log</meta>  
-    <data id="payload">  
-        <!-- This comment hides the real weapon -->  
-        <file path="/etc/shadow"/>  
-        <read mode="raw"/>  
-    </data>  
-</root>  
-````  
-### faille htpp (api)  
+### Risques
 
- coller ce minuscule bloc HTTP a la place de l url du site cela va  trompe le serveur qui interprète mal la limite entre deux paramètres, interprète un code hexadécimal comme un index surdimensionné et ouvre par conséquent un fichier qu'il n'était pas censé toucher, simplement parce qu'il a fait confiance aux longueurs et aux formats que vous lui avez fournis.  
- 
- ````bash  
-POST /api/theme HTTP/1.1  
-Host: vulnerable-server.local  
-Content-Type: application/x-www-form-urlencoded  
-Content-Length: 24  
-theme_id=0xFF&csrf_token=randomval  
-````  
-ps: vous pouvez modifier le chemin pour ouvrir n import quelle fichier  
+- divulgation de fichiers ;
+- requêtes vers des services internes ;
+- consommation excessive de ressources ;
+- fuite de secrets de configuration.
 
-### faille commentaire :  
+### Prévention
 
-Tu postes un commentaire sur un site, mais au lieu d'un vrai commentaire tu mets du code JavaScript. Ce code s'exécute dans le navigateur de tous ceux qui visitent la page.
+- désactiver les entités externes ;
+- utiliser un parseur XML configuré en mode sécurisé ;
+- limiter les schémas et les tailles de documents ;
+- journaliser les erreurs sans révéler de contenu sensible.
 
-Exemple :   
+## 2. Erreurs de validation des paramètres HTTP
 
-````bash
-<script>alert('hacké')</script>
-````
- Tu postes dans un commentaire et une pop-up apparaît chez tous les visiteurs.  
- ps: vous pouvez allez toujours plus loin comme voler les cooki de tous les visiteur .  
+Une API peut devenir vulnérable lorsqu’elle fait confiance à un identifiant, à une longueur ou à un format fourni par le client. Une valeur mal validée peut provoquer un accès non prévu, une erreur de logique ou un contournement d’autorisation.
+
+### Vérifications défensives
+
+- valider le type et la plage de chaque paramètre côté serveur ;
+- refuser les valeurs inattendues et les conversions ambiguës ;
+- vérifier les autorisations sur chaque objet demandé ;
+- tester les réponses avec des valeurs limites dans un lab.
+
+## 3. XSS — Cross-Site Scripting
+
+Une XSS se produit lorsqu’une donnée fournie par un utilisateur est réinjectée dans une page sans échappement adapté. Le navigateur peut alors interpréter cette donnée comme du code au lieu de texte.
+
+### Variantes
+
+- **réfléchie :** la donnée revient immédiatement dans la réponse ;
+- **stockée :** la donnée est enregistrée puis affichée à d’autres utilisateurs ;
+- **DOM :** le problème vient d’un traitement JavaScript côté navigateur.
+
+### Prévention
+
+- échapper les sorties selon leur contexte HTML, attribut, URL ou JavaScript ;
+- utiliser une politique CSP adaptée ;
+- éviter `innerHTML` lorsque `textContent` suffit ;
+- valider les entrées sans considérer la validation comme un remplacement de l’échappement.
+
+## Laboratoire conseillé
+
+Créez une application locale et vérifiez les correctifs avec un scanner autorisé. Ne testez jamais une URL publique sans permission écrite.
+
+## Checklist de correction
+
+- [ ] Les entrées sont validées côté serveur.
+- [ ] Les sorties sont encodées selon leur contexte.
+- [ ] Les parseurs XML sont configurés de manière sécurisée.
+- [ ] Les contrôles d’accès sont appliqués côté serveur.
+- [ ] Les journaux ne contiennent pas de secrets.
+- [ ] Les tests sont réalisés dans un environnement isolé.

@@ -1,59 +1,69 @@
+# Phishing — comprendre et simuler en laboratoire
 
-# linux hack faux site : mots de passe et identifiant repris
+Le phishing consiste à tromper une personne afin de lui faire révéler une information ou effectuer une action. Cette note sert à comprendre les signaux d’une campagne, construire une sensibilisation et tester des défenses avec des comptes de démonstration.
 
-## prerequis :  
-- virtual box avec kali linux dedans
-  
-cela va servir a cloner des sites connu parfaitement  (insta,tiktok,apple...)  
+> **Interdit :** cloner un vrai service pour récupérer des identifiants, publier une page sur Internet, utiliser un tunnel public, collecter une caméra, un microphone ou une localisation, ou envoyer un lien à une personne sans consentement explicite.
 
-copier toutes les commande une a une dans le terminal linux :  
- 
-## Installation
+## Projets cités dans la note originale
 
-### Mettre à jour le système
+| Projet | Lien | Explication |
+|---|---|---|
+| Zphisher | [Dépôt GitHub](https://github.com/htr-tech/zphisher) | Projet cité pour étudier les mécanismes de pages de phishing. À utiliser uniquement pour lire le code et créer une simulation locale sans collecte de secrets. |
+| Storm-Breaker | [Dépôt GitHub](https://github.com/ultrasecurity/Storm-Breaker) | Projet cité pour analyser les risques liés à la collecte de données par une page malveillante. Ne pas déployer ni utiliser sur une personne. |
+| Seeker | [Dépôt GitHub](https://github.com/thewhiteh4t/seeker) | Projet cité pour comprendre les risques de géolocalisation et de collecte de données. Ne pas utiliser pour localiser quelqu’un. |
+| Grabify | [Ouvrir](https://grabify.org/) | Service cité dans la note ; ne l’utiliser que dans un exercice explicitement autorisé et transparent. |
+| Article sur le suivi IP | [Lire](https://curiouspatch.com/en/articles/understanding-ip-address-tracking-and-servers) | Présentation générale des risques du suivi d’adresse IP. |
 
-```bash
-sudo apt update
-sudo apt upgrade -y
-```
-### installer et ouvrir le tool :  
+## Lire un projet localement sans le déployer
+
+La première étape consiste à cloner le dépôt dans une VM isolée et à lire sa documentation :
 
 ```bash
 git clone --depth=1 https://github.com/htr-tech/zphisher.git
 cd zphisher
-bash zphisher.sh
-``` 
-<img width="1920" height="922" alt="image" src="https://github.com/user-attachments/assets/0c2435ba-ae90-44e1-bf54-942d53b95abf" />
+sed -n '1,220p' README.md
+```
 
-# pour le phishing ip public camera microphone position et autre donné :  
+Pour examiner les autres projets :
 
-## installation  
+```bash
+cd ..
+git clone https://github.com/ultrasecurity/Storm-Breaker.git
+git clone https://github.com/thewhiteh4t/seeker.git
+```
 
-### installer et ouvrir le tool :
-````bash
-git clone https://github.com/ultrasecurity/Storm-Breaker
-cd Storm-Breaker
-sudo bash install.sh
-sudo python3 -m pip install -r requirements.txt
-sudo python3 st.py
-````
-<img width="1920" height="922" alt="image" src="https://github.com/user-attachments/assets/6d4629fd-5f58-4402-ad94-531a1846701b" />
+N’exécutez pas les scripts d’installation ou de collecte sans avoir vérifié le code, les dépendances, les destinations réseau et le périmètre d’autorisation.
 
-### autre infos :  
+## Simulation pédagogique recommandée
 
-si vous voulez changer les templates ne touchez pas au js (il y a souvent des confusion avec les chemins et le serv)
+Pour une sensibilisation, créez une page locale inoffensive qui :
 
-## puis un outil specialiser dans la geolocalisation :
+- affiche un message de formation ;
+- ne demande aucun vrai mot de passe ;
+- ne collecte aucune adresse IP ou donnée personnelle ;
+- explique les indices qui permettent de reconnaître le piège ;
+- reste accessible uniquement sur `127.0.0.1` ou sur un réseau de test.
 
-````bash
-https://github.com/thewhiteh4t/seeker
-````
-# enfin des petit site pour le pishing
+Exemple pour servir des fichiers statiques locaux :
 
-`````bash
-https://grabify.org/
-``````
+```bash
+mkdir simulation-phishing
+cd simulation-phishing
+printf '<h1>Simulation de sensibilisation</h1><p>Aucun identifiant n’a été collecté.</p>\n' > index.html
+python3 -m http.server 8000 --bind 127.0.0.1
+```
 
-````bash
-https://curiouspatch.com/en/articles/understanding-ip-address-tracking-and-servers?tkn=eyJhbGciOiJIUzI1NiJ9.eyJhZHRpdGxlIjoiZ3JhYmlmeS5uZXQiLCJjaGFubmVsIjoiZF8wMTAxMiIsImNvdW50cnkiOiJmciIsImRvbWFpbiI6ImN1cmlvdXNwYXRjaC5jb20iLCJleHAiOjE3OTM1NTg1MTgsImxhbmciOiJFTiIsImxhbmd1YWdlIjoiRU4iLCJzYWxlYmFubmVyIjp7ImxpbmsiOiJodHRwczovL3d3dy5teWRvbWFpbmNvbnRhY3QuY29tLz9kb21haW5fbmFtZT1ncmFiaWZ5Lm5ldCIsInRleHQiOiJJbmZvcm1hdGlvbiBhYm91dCAgZ3JhYmlmeS5uZXQ6IC1ALUFjaGV0ZXIgY2UgZG9tYWluZS4tQC0iLCJ0eXBlIjoic3VidGxlIn0sInRhcmdldF91cmwiOiJodHRwczovL2N1cmlvdXNwYXRjaC5jb20vZW4vYXJ0aWNsZXMvdW5kZXJzdGFuZGluZy1pcC1hZGRyZXNzLXRyYWNraW5nLWFuZC1zZXJ2ZXJzIiwidHJhY2tfaWQiOiI4NzcxZDdiM2ZlNTM3ZDY3MjMwMTE0YzM0Y2RlMmQ2OTg4MzkzNjZhIn0.CBYQ051zj4deQ-Q8x9gJGGlQFMbXcWbjdSRAoxTt8fs
-````
+Ouvrez ensuite `http://127.0.0.1:8000` dans une VM de test. Arrêtez le serveur avec `Ctrl+C`.
+
+## Signaux à apprendre à repérer
+
+- domaine légèrement différent de l’original ;
+- urgence artificielle ou menace ;
+- pièce jointe inattendue ;
+- demande de mot de passe ou de code MFA ;
+- lien raccourci ou redirection inhabituelle ;
+- fautes, incohérences de marque ou expéditeur inattendu.
+
+## Protection
+
+Activez l’authentification multifacteur, utilisez un gestionnaire de mots de passe, vérifiez le domaine avant de vous connecter et signalez les messages suspects au responsable informatique.

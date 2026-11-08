@@ -1,22 +1,32 @@
-https://vx-underground.org/                       - apprendre les virus    (banque de malwar)
+# Ressources générales
 
-https://github.com/sundowndev/hacker-roadmap      - hacking                (list de depot gitub pour hacker miam -__-)
+Cette page regroupe des ressources complémentaires pour apprendre la cybersécurité, préparer un environnement de test et trouver de la documentation.
 
-https://uncensored.chat/chat/      (IA non censuré avec un peu de credit)
-pour l'IA non-censuré je vous propose de prendre un vpn vous pourrez alors continuez la conversation
-- proton vpn --> gratuit
-- nord vpn   --> payant mais plus de ip
-  
-https://hackerai.co/                                                       (une IA qui hack -__-)
+## Ressources par objectif
 
-https://www.fakenamegenerator.com/                - fake identity          (faire une fausse identité complete a part la carte d identié mais le courier le tel et out le reste est vrai )
-exemple:
-  
-<img width="306" height="209" alt="image" src="https://github.com/user-attachments/assets/e954724a-3f6f-4e23-9475-3850f56c9403" /><img width="288" height="215" alt="image" src="https://github.com/user-attachments/assets/73b17063-d4d2-48be-8a15-86fa44ec2530" />
-<img width="474" height="84" alt="image" src="https://github.com/user-attachments/assets/5bbb986a-dcd3-47f4-af59-9fa53f1717f9" />
+| Ressource | Lien | Explication |
+|---|---|---|
+| VX-Underground | [Ouvrir](https://vx-underground.org/) | Collection de ressources et d’échantillons utiles à la veille et à l’analyse défensive des malwares. À consulter dans un environnement isolé. |
+| Hacker Roadmap | [Dépôt GitHub](https://github.com/sundowndev/hacker-roadmap) | Parcours d’apprentissage et liste de projets pour progresser en cybersécurité. |
+| Uncensored Chat | [Ouvrir](https://uncensored.chat/chat/) | Service cité dans la note originale. Ne lui transmettre aucune donnée sensible et respecter les règles de la plateforme. |
+| HackerAI | [Ouvrir](https://hackerai.co/) | Service orienté cybersécurité cité comme ressource complémentaire. Vérifier les conditions d’utilisation avant de partager un contenu. |
+| Fake Name Generator | [Ouvrir](https://www.fakenamegenerator.com/) | Génère des identités fictives pour des comptes de démonstration ou des tests. Ne pas l’utiliser pour usurper l’identité d’une personne. |
+| FMHY | [Ouvrir](https://fmhy.net/) | Répertoire général de ressources et de logiciels. Vérifier chaque téléchargement et privilégier les sources officielles. |
 
-## petit site de drop open source de donné utiles
+## Bon environnement de travail
 
-````bash
-https://fmhy.net/
-````
+Pour les exercices de sécurité, utilisez de préférence :
+
+- une machine virtuelle dédiée ;
+- un réseau privé hôte ou un réseau interne ;
+- des comptes de test sans données réelles ;
+- des instantanés de machine avant chaque manipulation ;
+- des logiciels téléchargés depuis leur dépôt officiel.
+
+## Vérification avant téléchargement
+
+```bash
+sha256sum fichier-telecharge
+```
+
+Comparez ensuite l’empreinte avec celle publiée par l’éditeur lorsque cette information existe. N’exécutez jamais un fichier inconnu sur votre machine principale.

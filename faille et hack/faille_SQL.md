@@ -1,72 +1,78 @@
-# faille SQL  
+# Injection SQL — apprendre dans un laboratoire
 
-## prerequis :
-- virtual box avec kali linux dedans
-- sqlmap
-- si besoin BVWA
-- si besoin burp suite
-  
-## injection SQL :  
+L’injection SQL survient lorsqu’une application assemble une requête SQL avec des données utilisateur sans utiliser de requêtes préparées. Cette note explique comment mettre en place un laboratoire local et comment vérifier un correctif sans viser un site tiers.
 
-il peut etre placer dans un formulaire (car cela envoie une requete direct au serveur),dans des url,mais le moyen le plus efficace reste avec kali linux.
-tout d abord il faut savoir que les base de donné sont en SQL et tout ce qui a un acces direct aux base de donné constitue une faille.
-Je vais vous montré comment trouvé des identifiant dans n importe quelle site avec kali linux cela ne marche que si ces page n en sont pas proteger.
-vous pouvez utilsier des outil comme sqlmap , cet outil va envoyer des centaine voire des millier de requet sql pour voire si le site a une faille . mais il reste quand meme un outil intermediare. pour pirater une dateabase par une application web plus securisé, vous pouvez utiliser l outil burp suite qui lui vous donnera toutes les infos et les chemin nessessaire mais vous aure besoin de taper a la main toutes les commandes.
+> **Règle absolue :** les commandes de test ci-dessous sont réservées à une application locale ou à une cible pour laquelle vous possédez une autorisation écrite. N’utilisez jamais l’URL d’un site public choisi au hasard.
 
-## sqlmap :  
+## Prérequis
 
-premiere commande , lister les database disponible dans le site :  
+- VirtualBox ou une autre solution de virtualisation ;
+- une machine Kali ou Debian de laboratoire ;
+- DVWA ou WebGoat installé localement ;
+- SQLmap et Burp Suite Community pour observer les requêtes ;
+- un instantané de la machine avant les exercices.
 
-````bash
-sudo sqlmap -u (l url de ton site) --dbs
-````
-- faire attention aux base de donné par defaut (ne pas les choisir)
-  
-deuxieme commande , obtenir les table disponible pour la base de donné choisis :
+## Installation des outils sous Kali ou Debian
 
-````bash
-sudo sqlmap -u (l url de ton site) --(le nom de la base) --tables
-````
-troisieme commande , obtenir les columns disponible pour la table choisis :  
+```bash
+sudo apt update
+sudo apt install sqlmap burpsuite
+sqlmap --version
+```
 
-````bash
-sudo sqlmap -u (l url de ton site) --(le nom de la base) -T (le nom de la table) --columns
-````
-quatrieme et derniere commande , recuperer les mots de passe ou les email ou les nom user ou les identifiant ou tout :  
+Pour DVWA, utilisez sa documentation officielle et configurez-le sur `127.0.0.1` ou dans un réseau privé hôte. Ne rendez pas l’application accessible depuis Internet.
 
-````bash
-sudo sqlmap -u (l url de ton site) --(le nom de la base) -T (le nom de la table) -C (case de la columns chosis),(encore),(encore),(etc) --dump
-````
-les sites avec beaucoup de dossier et fichier peuvent avoir une autre table (commande 3) vous la  retaper normalement c est le meme nom.
+## Comprendre le problème
 
-## burp suite et DVWA :
+Une application vulnérable concatène parfois une valeur utilisateur dans une requête. La correction consiste à utiliser :
 
-c est assez simple envoyer une premiere requete pour savoir si le site web vous repond ,ensuite recuperer la requet avec burp suite et edidter les chemin comme une nouvelle requet , les cookies et parametrer les envoies et meme voire les changement de la page web en direct.
-mais on doit se dire comme apprendre le language sql ici vous trouvera une list de video yt qui utilisera notemant bvwa ou des site d entrainement pour apprendre :
+- des requêtes préparées ;
+- des paramètres typés ;
+- un compte de base de données avec les droits minimum ;
+- une validation côté serveur ;
+- des messages d’erreur qui ne révèlent pas le schéma SQL.
 
-https://www.youtube.com/watch?v=CoiA-6qhzvE (sqlmap , debutant - intro et exemple)
+## Utiliser Burp Suite dans le lab
 
-https://www.youtube.com/watch?v=fbt50vQfWZg (exemple utilisation sqlmap)
+1. Démarrer Burp Suite.
+2. Configurer le navigateur de test pour utiliser le proxy local de Burp.
+3. Intercepter une requête vers l’application locale.
+4. Observer les paramètres et la réponse.
+5. Rejouer uniquement une requête de test sur `127.0.0.1`.
+6. Corriger l’application puis comparer le comportement.
 
-https://www.youtube.com/watch?v=ex4003kemTc&list=PLdZk2ypV8xBGn_KjnGWODTAm4iNBoNrtK&index=2 (dvwa, niveau low)
+## Utiliser SQLmap avec une URL locale
 
-https://www.youtube.com/watch?v=dbfciJsFJIA (burp suite intro)
+L’exemple suivant ne doit être adapté qu’à une application de laboratoire que vous contrôlez :
 
-https://www.youtube.com/watch?v=fpx1fjBI-uI (burp suite tuto complet , A a Z)
+```bash
+sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --batch --level=1 --risk=1
+```
 
-https://www.youtube.com/watch?v=KWOs0Waq2TM&t=742s (burp suite niveau avancer , union et blind)
+Commencez par une vérification minimale. Évitez toute option destructive et ne demandez pas d’extraction de données réelles. Le but est d’identifier le défaut puis de confirmer que le correctif le bloque.
 
-https://www.youtube.com/watch?v=1sYa65LsL94 (burp suite en brute force et avec des injection sql + exemple)
+Afficher l’aide locale :
 
+```bash
+sqlmap --help
+```
 
-## commande connu :
-````bash
-'OR 1 = 1 --'
-````
-- reponse toujours vrai
-  
-## et pour vous entrainer sur des site non secu voici comment les trouver :
+## Correction et vérification
 
-````bash
-https://github.com/Proviesec/google-dorks/blob/main/google-dorks-for-sql-injection.txt
-````
+Après avoir remplacé la concaténation par une requête préparée :
+
+1. répéter le même test sur l’application locale ;
+2. vérifier que l’entrée est traitée comme une valeur et non comme du SQL ;
+3. contrôler les journaux ;
+4. ajouter un test automatisé de non-régression.
+
+## Vidéos et ressources présentes dans le projet
+
+- [SQLmap — introduction](https://www.youtube.com/watch?v=CoiA-6qhzvE)
+- [SQLmap — exemple](https://www.youtube.com/watch?v=fbt50vQfWZg)
+- [DVWA — niveau débutant](https://www.youtube.com/watch?v=ex4003kemTc&list=PLdZk2ypV8xBGn_KjnGWODTAm4iNBoNrtK&index=2)
+- [Burp Suite — introduction](https://www.youtube.com/watch?v=dbfciJsFJIA)
+- [Burp Suite — tutoriel complet](https://www.youtube.com/watch?v=fpx1fjBI-uI)
+- [Burp Suite — niveau avancé](https://www.youtube.com/watch?v=KWOs0Waq2TM&t=742s)
+- [Burp Suite — exemples contrôlés](https://www.youtube.com/watch?v=1sYa65LsL94)
+- [Google Dorks SQLi — ressource d’étude](https://github.com/Proviesec/google-dorks/blob/main/google-dorks-for-sql-injection.txt)
