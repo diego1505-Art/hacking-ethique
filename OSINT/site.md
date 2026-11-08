@@ -24,6 +24,68 @@ https://github.com/TheRealDalunacrobate/DaProfiler - outil osint          (tres 
 
 https://github.com/mxrch/GitFive                   - gitub osint          (permet de tracker toutes les activité et donné comme adress email autre compt local adresse et autre d un compt gitub. PS : vous devez vraiment pas aimez ce gas)
 
+# Installation et mise à jour de IPinfo CLI – Windows 11
+
+Projet officiel : [GitHub – IPinfo CLI](https://github.com/ipinfo/cli?utm_source=chatgpt.com)
+
+## 1. Télécharger et installer Go
+
+Site officiel : [Go Downloads](https://go.dev/dl/?utm_source=chatgpt.com)
+
+Télécharger la version Windows (`.msi`), puis lancer l'installateur.
+
+Vérifier l'installation :
+
+```
+go version
+```
+
+## 2. Télécharger le code source
+
+Ouvrir PowerShell et exécuter :
+
+```
+git clone https://github.com/ipinfo/cli ipinfo-cli
+```
+
+Accéder au dossier :
+
+```
+cd ipinfo-cli
+```
+
+## 3. Compiler et installer IPinfo CLI
+
+```
+go install ./ipinfo/
+```
+
+## 4. Vérifier l'installation
+
+```
+ipinfo version
+```
+
+## 5. Mettre à jour IPinfo CLI
+
+Pour installer la dernière version disponible depuis les sources officielles :
+
+```
+go install github.com/ipinfo/cli/ipinfo@latest
+```
+
+Vérifier la version après la mise à jour :
+
+```
+ipinfo version
+```
+
+Liens officiels :
+
+- [Code source GitHub](https://github.com/ipinfo/cli?utm_source=chatgpt.com)
+- [Historique des versions](https://github.com/ipinfo/cli/releases?utm_source=chatgpt.com)
+- [Téléchargement de Go](https://go.dev/dl/?utm_source=chatgpt.com)
+
 ## video yt :
 
 https://www.youtube.com/watch?v=8XDRUk4soS8
