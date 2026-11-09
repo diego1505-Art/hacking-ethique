@@ -8,10 +8,10 @@ Cette page regroupe des ressources complémentaires pour apprendre la cybersécu
 |---|---|---|
 | VX-Underground | [Ouvrir](https://vx-underground.org/) | Collection de ressources et d’échantillons utiles à la veille et à l’analyse défensive des malwares. À consulter dans un environnement isolé. |
 | Hacker Roadmap | [Dépôt GitHub](https://github.com/sundowndev/hacker-roadmap) | Parcours d’apprentissage et liste de projets pour progresser en cybersécurité. |
-| Uncensored Chat | [Ouvrir](https://uncensored.chat/chat/) | Service cité dans la note originale. Ne lui transmettre aucune donnée sensible et respecter les règles de la plateforme. |
-| HackerAI | [Ouvrir](https://hackerai.co/) | Service orienté cybersécurité cité comme ressource complémentaire. Vérifier les conditions d’utilisation avant de partager un contenu. |
 | Fake Name Generator | [Ouvrir](https://www.fakenamegenerator.com/) | Génère des identités fictives pour des comptes de démonstration ou des tests. Ne pas l’utiliser pour usurper l’identité d’une personne. |
 | FMHY | [Ouvrir](https://fmhy.net/) | Répertoire général de ressources et de logiciels. Vérifier chaque téléchargement et privilégier les sources officielles. |
+
+Les outils d’intelligence artificielle et les commandes d’installation locale sont documentés séparément dans [coding.md](coding.md).
 
 ## Bon environnement de travail
 

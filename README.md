@@ -13,6 +13,7 @@ Catalogue des outils, projets et ressources présents dans ce dépôt. Les resso
 - [Malwares, Metasploit et laboratoire](#malwares-metasploit-et-laboratoire)
 - [Phishing et ingénierie sociale](#phishing-et-ingénierie-sociale)
 - [DDoS et résilience réseau](#ddos-et-résilience-réseau)
+- [IA et outils de programmation](#ia-et-outils-de-programmation)
 - [Ressources générales](#ressources-générales)
 
 ## Cryptographie
@@ -129,6 +130,16 @@ Détails : [faille et hack/hack_ddos.md](faille%20et%20hack/hack_ddos.md)
 | UnstableDDoS | [Dépôt GitHub](https://github.com/iJoshoa/UnstableDDoS) | Projet cité pour analyser différents paramètres de trafic dans un lab contrôlé. |
 | GreeDoS V2 | [Dépôt GitHub](https://github.com/MrEchoFi/GreeDoS_V2) | Projet cité dans la note pour étudier la configuration de tests de charge autorisés. |
 
+## IA et outils de programmation
+
+Catalogue séparé des assistants cloud, des agents de programmation, des runtimes locaux comme Ollama et LM Studio, ainsi que des modèles gratuits et du projet Heretic.
+
+Détails : [autre/coding.md](autre/coding.md)
+
+| Ressource | Lien | Description |
+|---|---|---|
+| Coding et IA cloud/local | [Lire la note](autre/coding.md) | Comparaison cloud/local, commandes Ollama, installation LM Studio, modèles téléchargeables et présentation prudente de Heretic. |
+
 ## Ressources générales
 
 Ressources complémentaires liées à l’apprentissage, à l’analyse de malwares, aux identités de test et à la recherche de documentation.
@@ -139,8 +150,6 @@ Détails : [autre/site.md](autre/site.md)
 |---|---|---|
 | VX-Underground | [Ouvrir](https://vx-underground.org/) | Banque de ressources et d’échantillons utilisée pour la veille et l’analyse défensive des malwares. |
 | Hacker Roadmap | [Dépôt GitHub](https://github.com/sundowndev/hacker-roadmap) | Parcours et ressources pour structurer l’apprentissage de la cybersécurité. |
-| Uncensored Chat | [Ouvrir](https://uncensored.chat/chat/) | Service cité dans la note ; vérifier les conditions d’utilisation et la confidentialité avant tout usage. |
-| HackerAI | [Ouvrir](https://hackerai.co/) | Service cité dans la note comme ressource orientée cybersécurité. |
 | Fake Name Generator | [Ouvrir](https://www.fakenamegenerator.com/) | Génération d’identités fictives pour des comptes et scénarios de test, sans usurpation. |
 | FMHY | [Ouvrir](https://fmhy.net/) | Répertoire général de ressources en ligne cité dans la note. |
 
@@ -152,6 +161,7 @@ Les descriptions détaillées, commandes, exemples et captures sont conservés d
 - [Forensics/site.md](Forensics/site.md)
 - [OSINT/site.md](OSINT/site.md)
 - [autre/site.md](autre/site.md)
+- [autre/coding.md](autre/coding.md)
 - [faille et hack/faille.md](faille%20et%20hack/faille.md)
 - [faille et hack/faille_SQL.md](faille%20et%20hack/faille_SQL.md)
 - [faille et hack/hack_ddos.md](faille%20et%20hack/hack_ddos.md)
