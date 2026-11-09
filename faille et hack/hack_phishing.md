@@ -32,6 +32,51 @@ git clone https://github.com/ultrasecurity/Storm-Breaker.git
 git clone https://github.com/thewhiteh4t/seeker.git
 ```
 
+## Commandes de préparation et d’inspection
+
+Voici les commandes de téléchargement et de préparation conservées depuis la note originale. Elles doivent être exécutées dans une VM isolée, sans compte réel et sans tunnel public. Avant d’installer une dépendance, lisez le code et le fichier `README` du projet.
+
+### Zphisher — télécharger et lire le projet
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+git clone --depth=1 https://github.com/htr-tech/zphisher.git
+cd zphisher
+sed -n '1,220p' README.md
+find . -maxdepth 2 -type f -name '*.sh' -print
+```
+
+### Storm-Breaker — télécharger et inspecter les dépendances
+
+```bash
+cd ..
+git clone https://github.com/ultrasecurity/Storm-Breaker.git
+cd Storm-Breaker
+sed -n '1,220p' README.md
+sed -n '1,220p' requirements.txt
+```
+
+Si vous devez seulement préparer l’environnement de test après audit du code, faites-le dans une VM jetable :
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+### Seeker — télécharger et lire la documentation
+
+```bash
+cd ..
+git clone https://github.com/thewhiteh4t/seeker.git
+cd seeker
+sed -n '1,220p' README.md
+```
+
+Je ne remets pas les commandes qui démarrent une page de collecte, un serveur public, un tunnel ou un accès à une caméra, un microphone, une adresse IP ou une localisation. Pour une démonstration, utilisez plutôt la page locale inoffensive de la section suivante.
+
 N’exécutez pas les scripts d’installation ou de collecte sans avoir vérifié le code, les dépendances, les destinations réseau et le périmètre d’autorisation.
 
 ## Simulation pédagogique recommandée

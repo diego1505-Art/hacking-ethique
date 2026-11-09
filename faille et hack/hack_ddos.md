@@ -30,6 +30,50 @@ git clone https://github.com/iJoshoa/UnstableDDoS.git
 git clone https://github.com/MrEchoFi/GreeDoS_V2.git
 ```
 
+## Commandes de préparation des projets
+
+Ces commandes reprennent les étapes de préparation présentes dans la note originale. Elles installent uniquement les dépendances et permettent de consulter l’aide ; elles ne lancent pas de trafic vers une cible.
+
+### Ultra-DDos
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt install git python3 python3-pip
+cd Ultra-DDos
+python2 --version
+python2 main.py --help
+```
+
+Si le projet demande sa dépendance Python indiquée dans sa documentation, installez-la dans la VM de laboratoire après avoir relu le paquet :
+
+```bash
+python3 -m pip install --break-system-packages user-agent
+```
+
+### UnstableDDoS
+
+```bash
+cd ../UnstableDDoS
+sudo apt update
+sudo apt upgrade
+python3 -m pip install --break-system-packages pysocks bs4 scapy-python3
+python3 UNSTABLE.py --help
+```
+
+### GreeDoS V2
+
+```bash
+cd ../GreeDoS_V2
+sudo apt update
+sudo apt upgrade
+sudo apt install git python3 python3-pip
+python3 -m pip install --break-system-packages pysocks bs4 scapy-python3
+python3 GreeDoS_ii.py --help
+```
+
+Les scripts peuvent ne pas accepter `--help` selon leur version. Dans ce cas, arrêtez-vous à l’inspection du code et de leur documentation. Je ne fournis pas de commande de lancement de flood ni de cible à renseigner : même avec une IP locale, ces scripts sont conçus pour générer du trafic agressif. Pour un test de performance, utilisez plutôt le benchmark local et limité ci-dessous.
+
 Avant toute exécution, examinez les scripts, les dépendances, les destinations réseau et les conditions de licence. Utilisez une VM sans accès à votre réseau de production.
 
 ## Test de charge bénin en local

