@@ -7,12 +7,13 @@ La forensics numérique, ou investigation numérique, consiste à collecter et a
 Le fichier [site.md](site.md) présente des outils web et locaux pour :
 
 - lire les métadonnées EXIF ;
+- afficher sur une carte la position issue de coordonnées GPS présentes dans une photo ;
 - rechercher des informations cachées dans une image ;
 - examiner et convertir des fichiers ;
 - analyser des manipulations audio et des deepfakes ;
 - préserver et documenter les résultats d’une analyse.
 
-ExifTool y est présenté avec des commandes d’installation, de lecture, d’export et de nettoyage sur une copie de travail.
+ExifTool y est présenté avec des commandes d’installation, de lecture, d’export et de nettoyage sur une copie de travail. Pic2Map complète cette partie en affichant sur une carte les coordonnées GPS présentes dans les métadonnées EXIF.
 
 ## Règles d’une analyse fiable
 

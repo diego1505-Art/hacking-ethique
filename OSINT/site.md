@@ -6,7 +6,6 @@ L’OSINT consiste à recueillir et vérifier des informations accessibles publi
 
 | Outil | Lien | Utilité |
 |---|---|---|
-| Pics.io Metadata Viewer | [Ouvrir](https://pics.io/photo-metadata-viewer-fr) | Lire les métadonnées EXIF d’une image. |
 | UserSearch | [Ouvrir](https://usersearch.org/) | Vérifier la présence d’un pseudonyme sur plusieurs services. |
 | Web-Check | [Ouvrir](https://web-check.xyz/) | Examiner les informations publiques d’un domaine ou d’une URL de test. |
 | OSINT Framework | [Ouvrir](https://osintframework.com/) | Annuaire de méthodes et d’outils OSINT classés par thème. |

@@ -7,7 +7,6 @@ L’OSINT, ou renseignement en sources ouvertes, consiste à rechercher, recoupe
 Le fichier [site.md](site.md) rassemble des outils web et locaux pour :
 
 - rechercher un pseudonyme sur plusieurs plateformes ;
-- analyser des métadonnées d’image ;
 - vérifier des informations publiques liées à un domaine ou une adresse IP ;
 - organiser une recherche avec OSINT Framework ;
 - étudier des vulnérabilités publiées dans un objectif défensif.

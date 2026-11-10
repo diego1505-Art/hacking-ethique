@@ -40,19 +40,19 @@ Détails : [Forensics/site.md](Forensics/site.md)
 | iLovePDF — déverrouillage PDF | [Ouvrir](https://www.ilovepdf.com/fr/deverrouiller_pdf) | Outil de traitement et de déverrouillage de fichiers PDF dont vous avez l’autorisation. |
 | AperiSolve | [Ouvrir](https://www.aperisolve.com/fr/) | Analyse d’images et recherche d’informations ou de données dissimulées. |
 | Jimpl | [Ouvrir](https://jimpl.com/) | Lecture des métadonnées EXIF de différents types de fichiers. |
+| Pic2Map | [Ouvrir](https://www.pic2map.com/) | Lecture des métadonnées EXIF et affichage sur une carte lorsque des coordonnées GPS sont présentes. |
 | Convert Guru | [Ouvrir](https://convert.guru/fr/convertisseur) | Conversion et analyse de fichiers. |
 | Tembric — Audio Forensics | [Ouvrir](https://tembrica.com/fr/audio-forensics) | Détection de manipulations audio et de deepfakes. |
 | ExifTool | [Ouvrir](https://exiftool.org/) | Lecture et modification des métadonnées de fichiers, notamment les données EXIF. |
 
 ## OSINT et collecte d’informations
 
-Outils de recherche en sources ouvertes pour étudier des pseudonymes, comptes, adresses e-mail, métadonnées, domaines et informations publiques dans un cadre autorisé.
+Outils de recherche en sources ouvertes pour étudier des pseudonymes, comptes, adresses e-mail, domaines et informations publiques dans un cadre autorisé. Les métadonnées EXIF et les coordonnées GPS des images sont regroupées dans la catégorie Forensics.
 
 Détails : [OSINT/site.md](OSINT/site.md)
 
 | Outil | Lien | Description |
 |---|---|---|
-| Pics.io Metadata Viewer | [Ouvrir](https://pics.io/photo-metadata-viewer-fr) | Analyse des métadonnées EXIF d’une image : GPS, date, appareil, etc. |
 | h8mail | [Dépôt GitHub](https://github.com/khast3x/h8mail) | Recherche OSINT liée aux adresses e-mail et aux fuites connues, en local. |
 | Toutatis | [Dépôt GitHub](https://github.com/megadose/toutatis) | Recherche d’informations publiques associées à un identifiant Instagram. |
 | UserSearch | [Ouvrir](https://usersearch.org/) | Recherche d’un nom d’utilisateur sur différents services en ligne. |
