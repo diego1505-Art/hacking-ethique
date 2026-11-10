@@ -157,8 +157,11 @@ Détails : [autre/site.md](autre/site.md)
 
 Les descriptions détaillées, commandes, exemples et captures sont conservés dans les fichiers Markdown suivants :
 
+- [Cryptographie/README.md](Cryptographie/README.md) — explication de la catégorie cryptographie.
 - [Cryptographie/site.md](Cryptographie/site.md)
+- [Forensics/README.md](Forensics/README.md) — explication de la catégorie forensics.
 - [Forensics/site.md](Forensics/site.md)
+- [OSINT/README.md](OSINT/README.md) — explication de la catégorie OSINT.
 - [OSINT/site.md](OSINT/site.md)
 - [autre/site.md](autre/site.md)
 - [autre/coding.md](autre/coding.md)

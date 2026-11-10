@@ -87,6 +87,44 @@ sqlmap -u "http://127.0.0.1/dvwa/vulnerabilities/sqli/?id=1&Submit=Submit" -D dv
 
 Cette dernière commande peut afficher les comptes de démonstration créés par DVWA. N’utilisez jamais `--dump` sur une base réelle ou sur une cible dont vous n’êtes pas responsable.
 
+## Procédure en quatre commandes — syntaxe générique
+
+Cette version reprend la séquence originale avec la syntaxe correcte de SQLmap. Elle ne doit être utilisée que sur une application de laboratoire ou sur une cible couverte par une autorisation écrite. Dans les exemples, remplacez `URL_AUTORISEE`, `NOM_BASE`, `NOM_TABLE` et `colonne1,colonne2` uniquement par des valeurs de votre environnement de test.
+
+### Première commande — lister les bases disponibles
+
+```bash
+sudo sqlmap -u "URL_AUTORISEE" --dbs
+```
+
+Cette commande demande la liste des bases visibles par l’application vulnérable. Faites attention aux bases système ou par défaut : dans un exercice, ne sélectionnez pas une base qui ne fait pas partie de votre environnement de test.
+
+### Deuxième commande — lister les tables d’une base choisie
+
+```bash
+sudo sqlmap -u "URL_AUTORISEE" -D "NOM_BASE" --tables
+```
+
+`-D` désigne la base de données choisie. La forme `--NOM_BASE` parfois utilisée dans des notes anciennes n’est pas la syntaxe correcte de SQLmap.
+
+### Troisième commande — lister les colonnes d’une table choisie
+
+```bash
+sudo sqlmap -u "URL_AUTORISEE" -D "NOM_BASE" -T "NOM_TABLE" --columns
+```
+
+`-T` désigne la table à examiner. Si l’application possède plusieurs schémas ou beaucoup de répertoires, répétez cette étape uniquement pour les tables de votre base de laboratoire.
+
+### Quatrième commande — exporter des colonnes de données de test
+
+```bash
+sudo sqlmap -u "URL_AUTORISEE" -D "NOM_BASE" -T "NOM_TABLE" -C "colonne1,colonne2" --dump
+```
+
+`-C` permet de limiter l’export aux colonnes indiquées. Dans un lab, utilisez uniquement des données synthétiques. Ne cherchez pas à récupérer des mots de passe, e-mails ou identifiants appartenant à des personnes réelles.
+
+Si une application de laboratoire possède plusieurs tables pertinentes, reprenez la troisième puis la quatrième étape pour chaque table autorisée. Cela ne signifie pas qu’il faut sélectionner ou extraire les bases par défaut du serveur.
+
 ## Correction et vérification
 
 Après avoir remplacé la concaténation par une requête préparée :
