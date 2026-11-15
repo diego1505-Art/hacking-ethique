@@ -150,3 +150,36 @@ Après modification, faites des tests de qualité, de factualité, de robustesse
 - Utiliser des modèles et des jeux de données dont la licence autorise l’usage prévu.
 - Garder les serveurs locaux liés à `127.0.0.1` sauf besoin clairement justifié.
 - Ne pas confondre « moins de garde-fous » avec « plus fiable » ou « plus compétent ».
+  
+Les modèles moyens (Nécessitent une grosse carte graphique 16-24 Go)
+BugTraceAI-CORE-Ultra (27B)
+
+Lien : https://huggingface.co/BugTraceAI/BugTraceAI-CORE-Ultra-27B-Q6
+
+BugTraceAI-G4-Apex (26B MoE)
+
+Lien : https://huggingface.co/BugTraceAI/BugTraceAI-Apex-G4-26B-Q4
+
+Qwen2.5-Coder-32B-Instruct-abliterated (32B)
+
+Lien : https://huggingface.co/bartowski/Qwen2.5-Coder-32B-Instruct-abliterated-GGUF
+
+HIDra-30B-A3B (30B MoE)
+
+Lien : https://huggingface.co/SAPSAN-SKLEP/HIDra-30B-A3B-GGUF-uncensored-cybersec
+
+Les petits modèles (Accessibles sur ta machine en version quantifiée Q4)
+DeepHat V2 (7B / 32B)
+
+Lien : https://huggingface.co/WhiteRabbitNeo
+
+Dolphin3-Cyber-8B (8B)
+
+Lien : https://huggingface.co/RavichandranJ/Dolphin3-Cyber-8B-GGUF
+
+DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed
+
+Lien : https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed
+
+et les tres petit(3B)
+https://ollama.com/richardyoung/frognano-4b-2609-heretic:IQ3_M
