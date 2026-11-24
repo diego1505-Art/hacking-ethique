@@ -183,3 +183,7 @@ Lien : https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecu
 
 et les tres petit(3B)
 https://ollama.com/richardyoung/frognano-4b-2609-heretic:IQ3_M
+
+
+site with many IA tool https://tinywow.com/
+
